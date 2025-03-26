@@ -1,0 +1,86 @@
+:root {
+    --primary: #ff6b6b;
+    --secondary: #4ecdc4;
+    --background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+    touch-action: manipulation;
+    overflow: hidden;
+}
+
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.counter {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reset-btn {
+    background: var(--primary);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reset-btn:active {
+    transform: scale(0.95);
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: float 5s ease-in forwards;
+    background: radial-gradient(circle at 30% 30%, #fff, var(--primary));
+    opacity: 0.9;
+    box-shadow: 0 0 20px var(--primary);
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.bubble:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+@keyframes float {
+    from { bottom: -20vh; }
+    to { bottom: 120%; }
+}
+
+.pop {
+    animation: pop 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
